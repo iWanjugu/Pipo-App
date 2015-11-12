@@ -1,8 +1,11 @@
 package com.miniprojects.pipo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 
 public class Loading extends Activity {
@@ -12,13 +15,32 @@ public class Loading extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
 
-//        void startAnim(){
-//            findViewById(R.id.avloadingIndicatorView).setVisibility(View.VISIBLE);
-//        }
-//
-//        void stopAnim(){
-//            findViewById(R.id.avloadingIndicatorView).setVisibility(View.GONE);
-//        }
+        // To make the image rotate on the splash screen
+        // New imageview variable
+        final ImageView splashImageView = (ImageView) findViewById(R.id.splashImage);
+
+        // New Rotation variable
+        final Animation an = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
+
+        splashImageView.startAnimation(an);
+        an.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                finish();
+                Intent i = new Intent(getBaseContext(), ViewPeople.class);
+                startActivity(i);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
 
     }
 }
