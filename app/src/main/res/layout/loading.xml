@@ -35,7 +35,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:id="@+id/splashImage"
-        android:background="@drawable/yin_yan"
+        android:background="@drawable/yin_yang_black"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
