@@ -3,4 +3,13 @@
     <string name="action_settings">Settings</string>
     <string name="app_title">PIPO</string>
     <string name="view_people">VIEW PEOPLE</string>
+    <string name="people_details_title">People Details</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="country">Country</string>
+    <string name="company_name">Company Name</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="firebase_url">https://pipo.firebaseio.com/</string>
+    <string name="person_id">ID</string>
 </resources>
