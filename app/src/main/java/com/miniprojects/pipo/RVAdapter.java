@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * Created by iWanjugu on 13/11/2015.
  */
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PeopleDataViewHolder> {
+public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PeopleDataObjectViewHolder> {
 
-    public static class PeopleDataViewHolder extends RecyclerView.ViewHolder {
+    public static class PeopleDataObjectViewHolder extends RecyclerView.ViewHolder {
 
         CardView cv;
 
@@ -26,7 +26,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PeopleDataViewHold
         TextView company_nameText;
         TextView credit_cardText;
 
-        public PeopleDataViewHolder(View itemView) {
+        public PeopleDataObjectViewHolder(View itemView) {
             super(itemView);
             idText = (TextView) itemView.findViewById(R.id.person_id);
             first_nameText = (TextView) itemView.findViewById(R.id.first_name);
@@ -49,17 +49,17 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PeopleDataViewHold
     }
 
     @Override
-    public PeopleDataViewHolder  onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public PeopleDataObjectViewHolder  onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.inner_card_layout, viewGroup, false);
-        PeopleDataViewHolder svh = new PeopleDataViewHolder (v);
+        PeopleDataObjectViewHolder svh = new PeopleDataObjectViewHolder(v);
         return svh;
     }
 
     @Override
-    public void onBindViewHolder(PeopleDataViewHolder dataObjectViewHolder, int i) {
+    public void onBindViewHolder(PeopleDataObjectViewHolder dataObjectViewHolder, int i) {
 
-        dataObjectViewHolder.first_nameText.setText(dataObj.get(i).first_name+" "+dataObj.get(i).last_name);
+        dataObjectViewHolder.first_nameText.setText(dataObj.get(i).first_name);
         dataObjectViewHolder.last_nameText.setText(dataObj.get(i).last_name);
         dataObjectViewHolder.company_nameText.setText(dataObj.get(i).company_name);
         dataObjectViewHolder.countryText.setText(dataObj.get(i).country);

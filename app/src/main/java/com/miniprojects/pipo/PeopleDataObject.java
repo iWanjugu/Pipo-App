@@ -1,9 +1,9 @@
 package com.miniprojects.pipo;
 
 /**
- * Created by iWanjugu on 13/11/2015.
+ * Created by iWanjugu on 16/11/2015.
  */
-public class PeopleData {
+public class PeopleDataObject {
     int id;
     String first_name;
     String last_name;
@@ -12,6 +12,9 @@ public class PeopleData {
     String company_name;
     long credit_card;
 
+    public PeopleDataObject (){
+
+    }
 
     public int getId() {
         return id;
@@ -40,17 +43,7 @@ public class PeopleData {
     public long getCreditCard() {
         return credit_card;
     }
-
-    PeopleData(int id, String first_name, String last_name, String email, String country,
-                      String company_name, long credit_card) {
-        this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email = email;
-        this.country = country;
-        this.company_name = company_name;
-        this.credit_card = credit_card;
-    }
 }
+
 
 
