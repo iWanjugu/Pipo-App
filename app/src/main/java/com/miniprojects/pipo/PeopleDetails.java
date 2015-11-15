@@ -41,50 +41,52 @@ public class PeopleDetails extends AppCompatActivity {
         //FIREBASE
 
         // populate view method
-        peopleListView = (ListView) findViewById(R.id.people_list);
+//        peopleListView = (ListView) findViewById(R.id.people_list);
         Firebase.setAndroidContext(this);
 
         myFirebaseRef = new Firebase(getString(R.string.firebase_url));
 
-        mAdapter = new FirebaseListAdapter<PeopleData>(this, PeopleData.class,
-                inner_card_layout, myFirebaseRef) {
-            @Override
-            protected void populateView(View view, PeopleData peopleData) {
-                ((TextView)view.findViewById(R.id.company_name)).setText(peopleData.getCompanyName());
-                ((TextView)view.findViewById(R.id.country)).setText(peopleData.getCountry());
-                ((TextView)view.findViewById(R.id.credit_card)).setText(peopleData.getCreditCard());
-                ((TextView)view.findViewById(R.id.email)).setText(peopleData.getEmail());
-                ((TextView)view.findViewById(R.id.first_name)).setText(peopleData.getFirstName());
-                ((TextView)view.findViewById(R.id.person_id)).setText(peopleData.getId());
-                ((TextView)view.findViewById(R.id.last_name)).setText(peopleData.getLastName());
-            }
-        };
-        peopleListView.setAdapter(mAdapter);
 
-        // Recycler Adapter
+//        //Listview Adapter
+//        mAdapter = new FirebaseListAdapter<PeopleData>(this, PeopleData.class,
+//                inner_card_layout, myFirebaseRef) {
+//            @Override
+//            protected void populateView(View view, PeopleData peopleData) {
+//                ((TextView)view.findViewById(R.id.company_name)).setText(peopleData.getCompanyName());
+//                ((TextView)view.findViewById(R.id.country)).setText(peopleData.getCountry());
+//                ((TextView)view.findViewById(R.id.credit_card)).setText(peopleData.getCreditCard());
+//                ((TextView)view.findViewById(R.id.email)).setText(peopleData.getEmail());
+//                ((TextView)view.findViewById(R.id.first_name)).setText(peopleData.getFirstName());
+//                ((TextView)view.findViewById(R.id.person_id)).setText(peopleData.getId());
+//                ((TextView)view.findViewById(R.id.last_name)).setText(peopleData.getLastName());
+//            }
+//        };
+//        peopleListView.setAdapter(mAdapter);
 
-        RecyclerView recycler = (RecyclerView) findViewById(R.id.people_recycler);
-        recycler.setHasFixedSize(true);
-        recycler.setLayoutManager(new LinearLayoutManager(this));
-
-        recAdapter = new FirebaseRecyclerViewAdapter<PeopleData, PeopleDataViewHolder>
-                (PeopleData.class, inner_card_layout, PeopleDataViewHolder.class, myFirebaseRef) {
-
-            @Override
-            public void populateViewHolder(PeopleDataViewHolder peopleDataViewHolder,
-                                           PeopleData peopleData) {
-
-                peopleDataViewHolder.idText.setText(peopleData.getId());
-                peopleDataViewHolder.first_nameText.setText(peopleData.getFirstName());
-                peopleDataViewHolder.last_nameText.setText(peopleData.getLastName());
-                peopleDataViewHolder.emailText.setText(peopleData.getEmail());
-                peopleDataViewHolder.countryText.setText(peopleData.getCountry());
-                peopleDataViewHolder.company_nameText.setText(peopleData.getCompanyName());
-                peopleDataViewHolder.credit_cardText.setText(peopleData.getCreditCard());
-            }
-        };
-
-        recycler.setAdapter(recAdapter);
+//        // Recycler Adapter
+//
+//        RecyclerView recycler = (RecyclerView) findViewById(R.id.people_recycler);
+//        recycler.setHasFixedSize(true);
+//        recycler.setLayoutManager(new LinearLayoutManager(this));
+//
+//        recAdapter = new FirebaseRecyclerViewAdapter<PeopleData, PeopleDataViewHolder>
+//                (PeopleData.class, inner_card_layout, PeopleDataViewHolder.class, myFirebaseRef) {
+//
+//            @Override
+//            public void populateViewHolder(PeopleDataViewHolder peopleDataViewHolder,
+//                                           PeopleData peopleData) {
+//
+//                peopleDataViewHolder.idText.setText(peopleData.getId());
+//                peopleDataViewHolder.first_nameText.setText(peopleData.getFirstName());
+//                peopleDataViewHolder.last_nameText.setText(peopleData.getLastName());
+//                peopleDataViewHolder.emailText.setText(peopleData.getEmail());
+//                peopleDataViewHolder.countryText.setText(peopleData.getCountry());
+//                peopleDataViewHolder.company_nameText.setText(peopleData.getCompanyName());
+//                peopleDataViewHolder.credit_cardText.setText(peopleData.getCreditCard());
+//            }
+//        };
+//
+//        recycler.setAdapter(recAdapter);
 
 
 //        // EventListener Method

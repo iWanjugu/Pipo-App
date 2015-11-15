@@ -33,9 +33,8 @@ public class PeopleDetails2 extends AppCompatActivity {
 
     private List<PeopleData> data_set;
     private RecyclerView rv;
-    PeopleData object;
+    PeopleDataObject object;
     Firebase myFirebaseRef;
-    FirebaseRecyclerViewAdapter recAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +51,12 @@ public class PeopleDetails2 extends AppCompatActivity {
         rv.setHasFixedSize(true);
 
 //        myFirebaseRef = new Firebase(getString(R.string.firebase_url));
-        getData(getString(R.string.firebase_url));
+        getData("https://pipo.firebaseio.com");
         initializeAdapter();
 
-    }private void initializeAdapter(){
+    }
+
+    private void initializeAdapter() {
         RVAdapter adapter = new RVAdapter(data_set);
         rv.setAdapter(adapter);
     }
@@ -68,56 +69,25 @@ public class PeopleDetails2 extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
 
                 for (DataSnapshot data : snapshot.getChildren()) {
-                    object = data.getValue(PeopleData.class);
+                    object = data.getValue(PeopleDataObject.class);
 
                     data_set.add(new PeopleData(
                             object.getId(),
-                            object.getCompany_name(),
-                            object.getCountry(),
-                            object.getCredit_card(),
+                            object.getFirstName(),
+                            object.getLastName(),
                             object.getEmail(),
-                            object.getFirst_name(),
-                            object.getLast_name()
+                            object.getCountry(),
+                            object.getCompanyName(),
+                            object.getCreditCard()
                     ));
-
                 }
-
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-
+                System.out.println("The read failed: " + firebaseError.getMessage());
             }
-        }
-
-
-
-                    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mAdapter.cleanup();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_loading, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        });
     }
 }
 
